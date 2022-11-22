@@ -8,9 +8,9 @@ import java.time.Duration;
 
 public class SignInPage {
 
-    WebDriver driver;
+    private final WebDriver driver;
 
-    public final By signInButton = By.xpath(".//button[text()='Войти']");
+    private final By signInButton = By.xpath(".//button[text()='Войти']");
 
     private final By emailInputField = By.xpath(".//fieldset[1]//input");
 

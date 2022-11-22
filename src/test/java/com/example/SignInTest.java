@@ -1,42 +1,17 @@
 package com.example;
 
-import com.example.page.SignInPage;
-import com.example.page.MainPage;
+import com.example.constants.Constants;
 import com.example.page.PasswordRecoveryPage;
 import com.example.page.RegisterPage;
+import com.example.page.SignInPage;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
-public class SignInTest {
+public class SignInTest extends BaseAuthUITest {
 
     private SignInPage signInPage;
-
-    private WebDriver driver;
-
-    private MainPage mainPage;
-
-    @Before
-    public void setUp() {
-        driver = DriverFactory.getBrowser(Constants.CHROME);
-        //driver = DriverFactory.getBrowser(Constants.YANDEX);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        mainPage = new MainPage(driver);
-        driver.manage().window().maximize();
-        driver.get(Constants.BASE_PATH);
-        mainPage.waitSignInButton();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Test
     @DisplayName("Вход по кнопке \"Войти в аккаунт\" на главной")
@@ -44,8 +19,8 @@ public class SignInTest {
         signInPage = new SignInPage(driver);
         mainPage.clickSignInButton();
         signInPage.waitSignInButton();
-        signInPage.fillEmail(Constants.EMAIL);
-        signInPage.fillPassword(Constants.PASSWORD);
+        signInPage.fillEmail(user.getEmail());
+        signInPage.fillPassword(user.getPassword());
         signInPage.clickSignInButton();
         mainPage.waitCreateOrderButton();
         assertEquals(Constants.BASE_PATH, driver.getCurrentUrl());
@@ -57,8 +32,8 @@ public class SignInTest {
         signInPage = new SignInPage(driver);
         mainPage.clickAccountButton();
         signInPage.waitSignInButton();
-        signInPage.fillEmail(Constants.EMAIL);
-        signInPage.fillPassword(Constants.PASSWORD);
+        signInPage.fillEmail(user.getEmail());
+        signInPage.fillPassword(user.getPassword());
         signInPage.clickSignInButton();
         mainPage.waitCreateOrderButton();
         assertEquals(Constants.BASE_PATH, driver.getCurrentUrl());
@@ -73,8 +48,8 @@ public class SignInTest {
         registerPage.waitRegisterButton();
         registerPage.clickSignInButton();
         signInPage.waitSignInButton();
-        signInPage.fillEmail(Constants.EMAIL);
-        signInPage.fillPassword(Constants.PASSWORD);
+        signInPage.fillEmail(user.getEmail());
+        signInPage.fillPassword(user.getPassword());
         signInPage.clickSignInButton();
         mainPage.waitCreateOrderButton();
         assertEquals(Constants.BASE_PATH, driver.getCurrentUrl());
@@ -89,8 +64,8 @@ public class SignInTest {
         passwordRecoveryPage.waitRecoveryPasswordButton();
         passwordRecoveryPage.clickSignInLink();
         signInPage.waitSignInButton();
-        signInPage.fillEmail(Constants.EMAIL);
-        signInPage.fillPassword(Constants.PASSWORD);
+        signInPage.fillEmail(user.getEmail());
+        signInPage.fillPassword(user.getPassword());
         signInPage.clickSignInButton();
         mainPage.waitCreateOrderButton();
         assertEquals(Constants.BASE_PATH, driver.getCurrentUrl());

@@ -1,43 +1,25 @@
 package com.example;
 
-import com.example.page.SignInPage;
-import com.example.page.MainPage;
+import com.example.constants.Constants;
 import com.example.page.AccountProfilePage;
+import com.example.page.SignInPage;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
-public class AccountProfilePageTest {
-    private WebDriver driver;
-    private MainPage mainPage;
+public class AccountProfilePageTest extends BaseAuthUITest {
 
     @Before
     public void setUp() {
-        driver = DriverFactory.getBrowser(Constants.CHROME);
-        //driver = DriverFactory.getBrowser(Constants.YANDEX);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-        driver.get(Constants.BASE_PATH);
-        mainPage = new MainPage(driver);
-        mainPage.waitSignInButton();
         mainPage.clickSignInButton();
         SignInPage signInPage = new SignInPage(driver);
         signInPage.waitSignInButton();
-        signInPage.fillEmail(Constants.EMAIL);
-        signInPage.fillPassword(Constants.PASSWORD);
+        signInPage.fillEmail(user.getEmail());
+        signInPage.fillPassword(user.getPassword());
         signInPage.clickSignInButton();
         mainPage.waitCreateOrderButton();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 
     @Test

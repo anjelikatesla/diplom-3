@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class MainPage {
 
-    WebDriver driver;
+    private final WebDriver driver;
 
     private final By signInButton = By.xpath(".//button[text()='Войти в аккаунт']");
 

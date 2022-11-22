@@ -8,11 +8,11 @@ import java.time.Duration;
 
 public class PasswordRecoveryPage {
 
-    WebDriver driver;
+    private final WebDriver driver;
 
-    public final By recoveryPasswordButton = By.xpath(".//button[text()='Восстановить']");
+    private final By recoveryPasswordButton = By.xpath(".//button[text()='Восстановить']");
 
-    public final By signInLink = By.linkText("Войти");
+    private final By signInLink = By.linkText("Войти");
 
     public PasswordRecoveryPage(WebDriver driver) {
         this.driver = driver;

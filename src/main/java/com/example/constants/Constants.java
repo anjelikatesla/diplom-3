@@ -1,16 +1,10 @@
-package com.example;
+package com.example.constants;
 
 public class Constants {
 
     public static final String YANDEX = "yandex";
 
     public static final String CHROME = "chrome";
-
-    public static final String EMAIL = "anjelika@example.com";
-
-    public static final String PASSWORD = "lika123456";
-
-    public static final String NAME = "Anjelika";
 
     public static final String BASE_PATH = "https://stellarburgers.nomoreparties.site/";
 

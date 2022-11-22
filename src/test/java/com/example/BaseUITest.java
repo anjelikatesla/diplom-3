@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.constants.Constants;
 import com.example.page.MainPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
